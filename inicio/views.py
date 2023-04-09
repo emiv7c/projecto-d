@@ -10,7 +10,7 @@ from inicio.models import animales
 
 
 def vista(request):
-    return HttpResponse('<h1>proyecto d</h1>')
+    return render(request, 'inicio/index.html')
 
 
 def saludar(request, nombre, apellido):
