@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv='X-UA-compatible' content="IE=edge">
-    <meta name="viewport" content="width=device-widht, initial-scale=1.0">
-    <title>mostrar fecha v2</title>
-</head>
-<body>
-    <p>{{fecha}}</p>
-</body>
-</html>
+
+
+{% extends 'base.html' %}
+
+{% block title_head %}
+<title>mostrar fecha</title>
+{% endblock title_head %}
+
+{% block h1_header %}
+<h1>bienvenido</h1>
+<p>{{fecha}}</p>
+{% endblock h1_header %}
