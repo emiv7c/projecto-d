@@ -29,7 +29,7 @@ def mostrar_fecha(request):
     dt_formateado = dt.strftime("%A %d %B %Y %I %M")
     
     
-    template = loader.get_template(r'mostrar_fecha.html')
+    template = loader.get_template(r'inicio/mostrar_fecha.html')
     
     template_renderizado = template.render({'fecha': dt_formateado})
     
@@ -48,7 +48,7 @@ def mi_prueba_template(request):
             1314,2589,2342,
         ]
     }
-    template = loader.get_template(r'mi_prueba_template.html')
+    template = loader.get_template(r'inicio/mi_prueba_template.html')
     template_renderizado = template.render(datos)
     return HttpResponse(template_renderizado)
 
@@ -59,7 +59,7 @@ def crear_animal(request):
     print(animal.nombre)
     animal.save()
     datos={'animal': animal}
-    template = loader.get_template(r'crear_animal.html')
+    template = loader.get_template(r'inicio/crear_animal.html')
     template_renderizado = template.render(datos)
     return HttpResponse(template_renderizado)
 
