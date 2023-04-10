@@ -11,7 +11,15 @@
 
 
 {% block contenido  %}
-<li>nombre:{{animal.nombre}} 
-    edad:{{animal.edad}}
-</li>
+,<form action="{% url 'inicio:animal' %}"method="POST">
+    {% csrf_token %}
+    {{formulario}}
+   
+<button>crear</button>
+
+
+</form>
 {% endblock contenido %}
+
+
+
