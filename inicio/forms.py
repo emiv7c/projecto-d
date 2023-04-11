@@ -4,9 +4,11 @@ from django import forms
 
 
 
-class creacionAnimalFormulario(forms.Form):
+class creacionVehiculoFormulario(forms.Form):
     
     nombre= forms.CharField(max_length=20)
-    edad=forms.IntegerField()
+    nombre_del_auto=forms.IntegerField()
+    kilometros_recorridos=forms.IntegerField
+    detalles_auto=forms.CharField()
     
     

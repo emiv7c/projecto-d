@@ -2,11 +2,11 @@ from django.db import models
 
 # Create your models here.
 
-class animales(models.Model):
+class autos (models.Model):
     nombre = models.CharField(max_length=20)
-    edad=models.IntegerField()
+    nombre_del_auto =models.CharField(max_length=20)
+    kilometros_recorridos=models.IntegerField()
+    detalles_auto=models.CharField(max_length=50)
     
-class persona(models.Model):
-    nombre=models.CharField( max_length=20)
-    apellido=models.CharField(max_length=20)
-    fecha_de_nacimiento=models.DateField()
+    
+    

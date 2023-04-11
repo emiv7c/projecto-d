@@ -1,0 +1,96 @@
+
+<!-- {% extends 'base.html' %}
+
+{% block title_head %}
+<head>crea tu animal aqui</head>
+{% endblock title_head %}
+
+
+{% block h1_header %}
+<h1>crea tu animal</h1>
+{% endblock h1_header %}
+
+
+{% block contenido  %}
+,<form action="{% url 'inicio:animal' %}"method="POST">
+    {% csrf_token %}
+    {{formulario}}
+   
+<button>crear</button>
+
+
+</form>
+{% endblock contenido %} --
+
+otra version
+
+{% extends 'base.html' %}
+
+{% block title_head %}
+<head>crea tu animal aqui</head>
+{% endblock title_head %}
+
+
+{% block h1_header %}
+<h1>crea tu animal</h1>
+{% endblock h1_header %}
+
+
+{% block contenido  %}
+,<form action="{% url 'inicio:animal' %}"method="POST">
+    {% csrf_token %}
+    <p>
+        
+        
+        ingrese nombre:
+        <input type="text" name='nombre'>
+
+    </p>
+    <p>
+
+        ingrese edad:
+        <input type="numbers" name='edad'>
+
+
+
+
+    </p>
+
+
+
+
+   
+    <button>crear</button>
+
+
+
+
+</form>
+{% endblock contenido %}
+
+
+lista
+
+{% extends 'base.html' %}
+
+{% block title_head %}
+<head>animales</head>
+{% endblock title_head %}
+
+
+{% block h1_header %}
+<h1>listado de animales</h1>
+{% endblock h1_header %}
+
+
+{% block contenido  %}
+{% for animal in animales %}
+
+<li>
+    Nombre: {{animal.nombre}}  Edad: {{animal.edad}}
+</li>
+
+
+{% endfor %}
+
+{% endblock contenido %} 

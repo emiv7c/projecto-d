@@ -1,8 +1,7 @@
 from django.contrib import admin
-from inicio.models import persona
-from inicio.models import animales
+from inicio.models import autos
 
 # Register your models here.
 
-admin.site.register([persona,animales])
+admin.site.register([autos])
 
