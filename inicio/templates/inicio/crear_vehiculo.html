@@ -11,8 +11,8 @@
 
 
 {% block contenido  %}
-,<form action="{% url 'inicio:venta_de_vehiculos' %}"method="POST">
-    {% csrf_token %}
+,<form method="POST">
+    {% csrf_token %}ethod="POST"
     <p>
          nombre del propietario:
         <input type="text" name='nombre'>
@@ -41,7 +41,7 @@
 
 
    
-    <button>crear</button>
+    <button type="submit">crear</button>
 
 
 
