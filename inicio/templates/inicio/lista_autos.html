@@ -1,23 +1,10 @@
 {% extends 'base.html' %}
 
-{% block title_head %}
-<head>vehiculos</head>
-{% endblock title_head %}
-
-
-{% block h1_header %}
-<h1>listado de vehiculos</h1>
-{% endblock h1_header %}
-
-
-{% block contenido  %}
-
-{{vehiculo}}
-
-<li>
-    Nombre: {{autos.nombre}}  modelo: {{autos.nombre_del_auto}}
-</li>
-
-
-
-{% endblock contenido %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+{% block contenido %}
+  <h1>Crear vehículo</h1>
+  <form method="POST">
+    {% csrf_token %}
+    {{ formulario.as_p }}
+    <button type="submit">Crear</button>
+  </form>
+{% endblock contenido %}
