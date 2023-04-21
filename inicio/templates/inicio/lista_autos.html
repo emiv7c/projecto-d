@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
 
+
 {% block contenido %}
-  <h1>Crear vehículo</h1>
-  <form method="POST">
-    {% csrf_token %}
-    {{ formulario.as_p }}
-    <button type="submit">Crear</button>
-  </form>
-{% endblock contenido %}
+
+
+  <h1>Lista de autos</h1>
+  <ul>
+    {% for auto in lista_autos %}
+      <li>{{ auto.nombre }} - {{ auto.nombre_del_auto }} - {{ auto.kilometros_recorridos }} - {{ auto.detalles_auto }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

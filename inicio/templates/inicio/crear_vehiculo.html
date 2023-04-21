@@ -4,49 +4,17 @@
 <head>venta de vehiculos</head>
 {% endblock title_head %}
 
-
 {% block h1_header %}
 <h1>indica tu vehiculo</h1>
 {% endblock h1_header %}
 
-
-{% block contenido  %}
-,<form method="POST">
-    {% csrf_token %}ethod="POST"
-    <p>
-         nombre del propietario:
-        <input type="text" name='nombre'>
-
-    </p>
-    <p>
-
-         modelo del vehiculo :
-        <input type="text" name='modelo'>
-    </p>
-    
-    <p>
-
-         kilometros recorridos:
-        <input type="numbers" name='kilometros'>
-
-    </p>
-    <p>
-
-
-        detalles del vehiculo:
-        <input type= "text" name='detalles'>
-
-    </p>
-
-
-
-   
-    <button type="submit">crear</button>
-
-
-
-
-</form>
+{% block contenido %}
+  <form method="POST">
+    {% csrf_token %}
+    <p>Nombre del propietario: <input type="text" name='nombre'></p>
+    <p>Nombre del vehículo: <input type="text" name='nombre_del_auto'></p>
+    <p>Kilómetros recorridos: <input type="number" name='kilometros_recorridos'></p>
+    <p>Detalles del vehículo: <input type="text" name='detalles_auto'></p>
+    <button type="submit">Crear</button>
+  </form>
 {% endblock contenido %}
-
-
