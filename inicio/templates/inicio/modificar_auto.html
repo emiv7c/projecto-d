@@ -1,3 +1,6 @@
+
+
+
 {% extends 'base.html' %}
 
 {% block title_head %}
@@ -10,7 +13,7 @@
 
 {% block contenido %}
 
-<form action={% url 'inicio:modificar_auto' %}method="POST">
+<form action={% url 'inicio:modificar_auto' autos.id %}method="POST">
   {% csrf_token %}
   <table>
     {{formulario}}
