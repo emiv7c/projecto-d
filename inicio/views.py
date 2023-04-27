@@ -22,24 +22,21 @@ def eliminar_auto(request, id_autos):
     return redirect('inicio:listar_autos')
 
 
-def modificar_auto(request,id_autos):
-    auto_modificar=autos.objects.get(id=id_autos)
-    if request.method=="POST":
-        formulario=modificacionDeAutosFormulario(request,"POST")
-        data_limpia= formulario.cleaned_data
-        auto_modificar.nombre=data_limpia['nombre']
-        auto_modificar.nombre_del_auto=data_limpia['nombre_del_auto']
-        auto_modificar.kilometros_recorridos=data_limpia['kilometros_recorridos']
-        auto_modificar.detalles_auto=data_limpia['detalles_auto']
-        auto_modificar.save()
+def modificar_auto(request, id_autos):
+    auto_modificar = autos.objects.get(id=id_autos)
+    formulario = modificacionDeAutosFormulario()  # asignar un valor inicial
+    if request.method == "POST":
+        formulario = modificacionDeAutosFormulario(request.POST)
         if formulario.is_valid():
-           return redirect('inicio:listar_autos')
- 
- 
-    formulario=modificacionDeAutosFormulario()
-    return render(request, 'inicio/modificar_auto.html', {'formulario':formulario, 'id_autos':id_autos})
+            data_limpia = formulario.cleaned_data
+            auto_modificar.nombre = data_limpia['nombre']
+            auto_modificar.nombre_del_auto = data_limpia['nombre_del_auto']
+            auto_modificar.kilometros_recorridos = data_limpia['kilometros_recorridos']
+            auto_modificar.detalles_auto = data_limpia['detalles_auto']
+            auto_modificar.save()
+            return redirect('inicio:listar_autos')
 
-
+    return render(request, 'inicio/modificar_auto.html', {'formulario': formulario, 'id_autos': id_autos})
 
 
 

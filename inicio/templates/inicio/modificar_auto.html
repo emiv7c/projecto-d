@@ -13,7 +13,9 @@
 
 {% block contenido %}
 
-<form action={% url 'inicio:modificar_auto' autos.id %}method="POST">
+<form action="{% url 'inicio:modificar_auto' id_autos %}" method="POST">
+
+
   {% csrf_token %}
   <table>
     {{formulario}}
