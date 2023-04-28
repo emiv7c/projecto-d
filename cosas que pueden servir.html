@@ -94,3 +94,62 @@ lista
 {% endfor %}
 
 {% endblock contenido %} 
+
+
+
+
+#  RECTA FINAL
+
+
+  modificar algo
+
+{% extends 'base.html' %}
+
+{% block title_head %}
+<head>venta de vehiculos</head>
+{% endblock title_head %}
+
+{% block h1_header %}
+<h1>indica tu vehiculo</h1>
+{% endblock h1_header %}
+
+{% block contenido %}
+
+<form action="{% url 'inicio:modificar_auto' id_autos %}" method="POST">
+
+
+  {% csrf_token %}
+  <table>
+    {{formulario}}
+  </table>
+  <button>modificar</button>
+</form>
+{% endblock contenido %}
+
+
+
+
+  crear algo 
+
+
+
+  {% extends 'base.html' %}
+
+{% block title_head %}
+<head>venta de vehiculos</head>
+{% endblock title_head %}
+
+{% block h1_header %}
+<h1>indica tu vehiculo</h1>
+{% endblock h1_header %}
+
+{% block contenido %}
+  <form method="POST">
+    {% csrf_token %}
+    <p>Nombre del propietario: <input type="text" name='nombre'></p>
+    <p>Nombre del vehículo: <input type="text" name='nombre_del_auto'></p>
+    <p>Kilómetros recorridos: <input type="number" name='kilometros_recorridos'></p>
+    <p>Detalles del vehículo: <input type="text" name='detalles_auto'></p>
+    <button type="submit">Crear</button>
+  </form>
+{% endblock contenido %}

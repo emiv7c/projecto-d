@@ -4,16 +4,18 @@ from django import forms
 
 
 
-class creacionVehiculoFormulario(forms.Form):
-    nombre = forms.CharField(max_length=20)
-    nombre_del_auto = forms.CharField(max_length=20)
-    kilometros_recorridos = forms.IntegerField()
-    detalles_auto = forms.CharField(max_length=50)
+
+class creacionBlogsFormulario(forms.Form):
+    nombre_autor = forms.CharField(max_length=20)
+    contenido= forms.CharField(max_length=1000)
+    descripcion_contenido=forms.CharField(max_length=100)
     
     
-class modificacionDeAutosFormulario(forms.Form):
-    nombre = forms.CharField(max_length=20)
-    nombre_del_auto = forms.CharField(max_length=20)
-    kilometros_recorridos = forms.IntegerField()
-    detalles_auto = forms.CharField(max_length=50)
+class modificacionDeBlogsFormulario(forms.Form):
+    nombre_autor = forms.CharField(max_length=20)
+    contenido= forms.CharField(max_length=1000)
+    descripcion_contenido=forms.CharField(max_length=100)
+    
+
+    
     

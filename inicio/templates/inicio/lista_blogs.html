@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+{% block contenido %}
+
+
+<h1>Lista de blogs</h1>
+<ul>
+  {% for blog in blogs %}
+    <li>{{ blog.nombre }} - {{ blog.descripcion_contenido }}</li>
+    <button>
+      <a class="navbar-brand" href="{% url 'inicio:modificar_auto' blog.id %}">modificar</a>
+    </button>
+    {{blog.id}}
+  {% endfor %}
+</ul>
+{% endblock %}

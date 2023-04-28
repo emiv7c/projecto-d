@@ -1,7 +1,7 @@
 from django.contrib import admin
-from inicio.models import autos
+from inicio.models import blog
 
 # Register your models here.
 
-admin.site.register([autos])
+admin.site.register([blog])
 
