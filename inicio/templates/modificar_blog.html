@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title_head %}
+<head>venta de vehiculos</head>
+{% endblock title_head %}
+
+{% block h1_header %}
+<h1>blogs</h1>
+{% endblock h1_header %}
+
+{% block contenido %}
+
+<form action="{% url 'inicio:modificar_auto' id_autos %}" method="POST">
+
+
+  {% csrf_token %}
+  <table>
+    {{formulario}}
+  </table>
+  <button>modificar</button>
+</form>
+{% endblock contenido %}
