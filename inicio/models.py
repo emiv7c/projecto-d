@@ -10,4 +10,10 @@ class blog (models.Model):
     descripcion_contenido = models.CharField(max_length=100)
     
     
+#class login (models.Model):
+    #contrasenia=models.CharField(max_length=20)
+    #nombre=models.CharField(max_length=20)
+    #email=models.CharField(max_length=20)
+    
+    
     
