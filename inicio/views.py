@@ -1,22 +1,76 @@
 from django.shortcuts import render,redirect
-from django.http import HttpResponse
-from django.template import Template, context, loader
 from inicio.models import blog
 from inicio.forms import creacionBlogsFormulario,modificacionDeBlogsFormulario
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate,logout
+from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
 
 
-
-#def login(request):
+def login_request(request):
     
     
-    #if request.method=="POST":
-        #nombre=request.POST.get('nombre')
-        #contrasenia=request.POST.get('contrasenia')
-        #email=request.POST.get('email')
+    if request.method=="POST":
+        form = AuthenticationForm(request, data = request.POST)
         
-        #try:
-            #user=
+        if form.is_valid():
+            usuario = form.cleaned_data.get('username')
+            contrasenia= form.cleaned_data.get('password')
+            
+            
+            
+            user= authenticate(username=usuario, password=contrasenia)
+            
+            
+            
+            if user is not None:
+                login(request, user)
+                
+                return render(request,"inicio/index.html",{"mensaje":f"bienvenido {usuario}"})
+            else:
+                
+                
+                return render(request,"inicio/index.html", {"mensaje":"Datos incorrectos"})
+        else:
+            
+            
+                return render(request,"inicio/index.html" , {"mensaje":"Error , formulario erroneo"})
+            
+    form = AuthenticationForm()
+    
+    return render(request, "inicio/login.html", {'form':form})
+
+
+
+
+
+
+def registro(request):
+    
+    if request.method=="POST":
+        
+    
+    
+        form=UserCreationForm(request.POST)
+        if form.is_valid():
+            
+        
+            username = form.cleaned_data['username']
+            form.save()
+            return render(request,"inicio/index.html" , {"mensaje": "usuario creado"})
+        
+        
+    else:
+        form= UserCreationForm()
+        
+        
+    return render(request,"inicio/registro.html", {"form": form})
+    
+            
+                
+                
+                
+    
+    
+   
 
 
 
@@ -44,10 +98,10 @@ def modificar_blog(request, id_blog):
         if formulario.is_valid():
             data_limpia = formulario.cleaned_data
             blog_modificar.nombre = data_limpia['nombre']
-            blog_modificar.contenido = data_limpia['nombre_del_auto']
-            blog_modificar.descripcion_contenido = data_limpia['kilometros_recorridos']
+            blog_modificar.contenido = data_limpia['contenido']
+            blog_modificar.descripcion_contenido = data_limpia['descripcion_contenido']
             blog_modificar.save()
-            return redirect('inicio:listar_autos')
+            return redirect('inicio:blogs')
 
     return render(request, 'inicio/modificar_blog.html', {'formulario': formulario, 'id_blog': id_blog})
 

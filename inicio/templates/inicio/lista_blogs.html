@@ -1,14 +1,28 @@
 {% extends 'base.html' %}
 
-
+{%block h1_header%}
+<h1>listado de blogs</h1>
+{%endblock h1_header%}
 
 {% block contenido %}
-<h1>Lista de blogs</h1>
-<ul>
-  {% for blog in lista_blogs %}
+<p>
 
-    <li>{{ blog.nombre }} - {{ blog.descripcion_contenido }}</li>
-    {{blog.id}}
+  <form action={%url 'inicio:blogs'%}>
+
+    {{formulario}}
+    <button>modificar</button>
+  </form>
+</p>
+   {% for blog in lista_blogs %}
+   <ul>
+      <li> nombre:{{ blog.nombre }} -descripcion {{ blog.descripcion_contenido }}</li>
+      {{blog.id}}
+      <button>
+        <a class="navbar-brand" href={% url "inicio:modificar_blog" blog.id%}>modificar</a>
+      </button>
+  </ul>
   {% endfor %}
-</ul>
-{% endblock %}
+
+{% endblock contenido %}
+
+
