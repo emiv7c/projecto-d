@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title_head %}
+<head>blogs</head>
+{% endblock title_head %}
+
+{% block h1_header %}
+<h1>crea tu blog!</h1>
+{% endblock h1_header %}
+
+{% block contenido %}
+  <form method="POST">
+    {% csrf_token %}
+    <p>Nombre <input type="text" name='nombre'></p>
+    <p>Contenido: <input type="text" name='contenido'></p>
+    <p>descripcion <input type="text" name='descripcion'></p>
+    
+    <button type="submit">Crear</button>
+  </form>
+{% endblock contenido %}

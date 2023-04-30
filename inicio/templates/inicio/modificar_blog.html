@@ -10,12 +10,12 @@
 
 {% block contenido %}
 
-<form action="{% url 'inicio:modificar_blog' id_blog %}" method="POST">
+<form action={% url 'inicio:modificar_blog' blog.id %} method="POST">
 
 
   {% csrf_token %}
   <table>
-    {{formulario}}
+    {{form}}
   </table>
   <button>modificar</button>
 </form>
