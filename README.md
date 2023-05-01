@@ -1,8 +1,2 @@
 # projecto-d
-hola, este proyecto se trata de un vendedor de autos, en el cual tienes que registrar tu auto con el nombre, modelo, kilometraje y algunos detalles como golpes etc.
-
-esto se guarda en la lista de autos en la cual puedes ver todos los detalles de los autos en ventagit 
-
-
-
-pd: no se porque pero si lo descargas del repositorio desaparece el venv, y por eso no puedo iniciar la pagina
+hola, esta es mi entrega final, como podran comprobar se me rompio todo jaja, en esta pagina puedes iniciar sesion, cerrar sesion y registrarte, dentro podras crear tus blogs y editarlos (si me dan un tiempo mas lo vas a poder borrar ;) tambien podras verlos en una lista en la cual se mostrara el nombre del autor y una descripcion del contenido.
