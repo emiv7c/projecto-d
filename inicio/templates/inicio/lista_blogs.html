@@ -1,4 +1,5 @@
-{% extends 'base.html' %}
+
+{% extends 'genericos/base.html' %}
 
 {%block h1_header%}
 <h1>listado de blogs</h1>
@@ -15,7 +16,7 @@
 </p>
    {% for blog in lista_blogs %}
    <ul>
-      <li> nombre:{{ blog.nombre }} -descripcion {{ blog.descripcion_contenido }}</li>
+      <li> <button type="button"><a href="#"> nombre:{{ blog.nombre }} -descripcion {{ blog.descripcion_contenido }}</a></button>  </li>
       {{blog.id}}
       <button>
         <a class="navbar-brand" href={% url "inicio:modificar_blog" blog.id%}>modificar</a>

@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'genericos/base.html' %}
 
 {% block title_head %}
 <head>blogs</head>
@@ -9,11 +9,11 @@
 {% endblock h1_header %}
 
 {% block contenido %}
-  <form method="POST">
+  <form action={% url '/inicio/' %} method="POST">
     {% csrf_token %}
-    <p>Nombre <input type="text" name='nombre'></p>
-    <p>Contenido: <input type="text" name='contenido'></p>
-    <p>descripcion <input type="text" name='descripcion'></p>
+    <table>
+      {{form}}
+    </table>
     
     <button type="submit">Crear</button>
   </form>

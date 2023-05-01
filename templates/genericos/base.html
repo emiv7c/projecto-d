@@ -24,10 +24,18 @@
         <!-- Navigation-->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
+                <a style="color: blue"  class="navbar-brand" href= "#">{{request.user.username}}</a>
                 <a class="navbar-brand" href="{% url 'inicio:inicio' %}">Inicio</a>
                 <a class="navbar-brand" href="{% url 'inicio:lista_blog' %}">lista de blogs</a>
                 <a class="navbar-brand" href="{% url 'inicio:crear-blog' %}">crear un blog</a>
-                
+                {%if request.user.is_authenticated%}
+                <a href={% url 'usuarios:editar' %}>{{request.user.username}}</a>
+                <a class="btn btn-primary" href={% url 'usuarios:logout' %}>cerrar sesion</a>
+                {% else %}
+                <a class="btn btn-primary" href={% url 'usuarios:login' %}>iniciar sesion</a>
+                <a class="btn btn-primary" href={% url 'usuarios:registro' %}>registrarse</a>
+                {% endif %}
+
             </div>
         </nav>
         <!-- Masthead-->
@@ -39,11 +47,12 @@
                         <div class="text-center text-white">
                             <!-- Page heading-->
                             {% block h1_header %}
-                            <h1 class="mb-5">template base</h1>
+                            {% comment "" %}<h1 class="mb-5">template base</h1>{% endcomment %}
+                            <h1 id= 'signup' class="mb-5">inicio sesion</h1>
 
 
                             {% endblock h1_header %}
-
+                            
                             
                             <!-- Signup form-->
                             <!-- * * * * * * * * * * * * * * *-->
@@ -54,7 +63,7 @@
                             <!-- https://startbootstrap.com/solution/contact-forms-->
                             <!-- to get an API token!-->
                             
-                                
+                            
                             
                         </div>
                     </div>

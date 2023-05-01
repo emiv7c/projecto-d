@@ -1,0 +1,31 @@
+{%extends 'genericos/base.html'%}
+
+
+{%block title_head%}
+             <title>editar perfil</title>
+{%endblock title_head%}
+
+
+{%block h1_header%}
+              <h>editar perfil</h>
+{%endblock h1_header%}
+
+
+
+{%block contenido%}
+
+{% if formulario.errors %}
+<p style="color: red">intenta denuevo </p>
+
+{% endif %}
+
+
+<form action={% url 'usuarios:registro' %} method="POST" enctype='multipart/form-data' >
+    {%csrf_token%}
+    <table>
+        {{formulario}}
+    </table>
+    <button type= 'button'><a href={% url 'usuarios:cambiar_contrasenia' %}>cambiar contrasenia</a></button>
+    <button> guardar cambios</button>
+</form>
+{% endblock contenido%}

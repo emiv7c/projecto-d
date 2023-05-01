@@ -5,72 +5,8 @@ from django.contrib.auth import login, authenticate,logout
 from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
 from django.views.generic.edit import CreateView,UpdateView
 from django.views.generic.list import ListView
+from django.urls import reverse_lazy
 
-def login_request(request):
-    
-    
-    if request.method=="POST":
-        form = AuthenticationForm(request, data = request.POST)
-        
-        if form.is_valid():
-            usuario = form.cleaned_data.get('username')
-            contrasenia= form.cleaned_data.get('password')
-            
-            
-            
-            user= authenticate(username=usuario, password=contrasenia)
-            
-            
-            
-            if user is not None:
-                login(request, user)
-                
-                return render(request,"inicio/index.html",{"mensaje":f"bienvenido {usuario}"})
-            else:
-                
-                
-                return render(request,"inicio/index.html", {"mensaje":"Datos incorrectos"})
-        else:
-            
-            
-                return render(request,"inicio/index.html" , {"mensaje":"Error , formulario erroneo"})
-            
-    form = AuthenticationForm()
-    
-    return render(request, "inicio/login.html", {'form':form})
-
-
-
-
-
-
-def registro(request):
-    
-    if request.method=="POST":
-        
-    
-    
-        form=UserCreationForm(request.POST)
-        if form.is_valid():
-            
-        
-            username = form.cleaned_data['username']
-            form.save()
-            return render(request,"inicio/index.html" , {"mensaje": "usuario creado"})
-        
-        
-    else:
-        form= UserCreationForm()
-        
-        
-    return render(request,"inicio/registro.html", {"form": form})
-    
-            
-                
-                
-                
-    
-    
    
 
 
@@ -110,22 +46,22 @@ def vista(request):
 
 
 
-def crear_blog(request):
-    if request.method == 'POST':
-        formulario = creacionBlogsFormulario(request.POST)
-        if formulario.is_valid():
-            datos_formulario = formulario.cleaned_data
-            vehiculo = blog(
-                nombre=datos_formulario['nombre'],
-                contenido=datos_formulario['contenido'],
-                descripcion_contenido=datos_formulario['descripcion']
-            )
+# def crear_blog(request):
+#     if request.method == 'POST':
+#         formulario = creacionBlogsFormulario(request.POST)
+#         if formulario.is_valid():
+#             datos_formulario = formulario.cleaned_data
+#             vehiculo = blog(
+#                 nombre=datos_formulario['nombre'],
+#                 contenido=datos_formulario['contenido'],
+#                 descripcion_contenido=datos_formulario['descripcion']
+#             )
             
-            vehiculo.save()
-            return redirect('inicio:blogs')
-    else:
-        formulario = creacionBlogsFormulario()
-    return render(request, 'inicio/crear_blog.html', {'formulario': formulario})
+#             vehiculo.save()
+#             return redirect('inicio:blogs')
+#     else:
+#         formulario = creacionBlogsFormulario()
+#     return render(request, 'inicio/crear_blog.html', {'formulario': formulario})
 
 
 #def blogs (request):
@@ -136,7 +72,7 @@ def crear_blog(request):
 class CrearBlog(CreateView):
     model: blog
     template_name = 'inicio/modificar_animal.html'
-    success_url = '/lista_blogs/'
+    success_url = reverse_lazy('inicio:lista_blogs')
     fields = ['nombre', 'descripcion', 'contenido']
     
 
@@ -146,7 +82,7 @@ class CrearBlog(CreateView):
 class ModificarBlog(UpdateView):
     model: blog
     template_name = 'inicio/modificar_animal.html'
-    success_url = '/lista_blogs/'
+    success_url = reverse_lazy('inicio:lista_blogs')
     fields = ['nombre', 'descripcion', 'contenido']
     
     
