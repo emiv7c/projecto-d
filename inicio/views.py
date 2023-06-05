@@ -6,6 +6,8 @@ from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
 from django.views.generic.edit import CreateView,UpdateView
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy
+from django.shortcuts import render
+from .models import Blog
 
    
 
@@ -70,7 +72,7 @@ def vista(request):
 
 
 class CrearBlog(CreateView):
-    model: blog
+    model= blog
     template_name = 'inicio/modificar_animal.html'
     success_url = reverse_lazy('inicio:lista_blogs')
     fields = ['nombre', 'descripcion', 'contenido']
@@ -81,15 +83,17 @@ class CrearBlog(CreateView):
 
 class ModificarBlog(UpdateView):
     model: blog
-    template_name = 'inicio/modificar_animal.html'
+    template_name = 'inicio/modificar_blog.html'
     success_url = reverse_lazy('inicio:lista_blogs')
     fields = ['nombre', 'descripcion', 'contenido']
     
     
-class ListaBlogs(ListView):
-    model= blog
-    template_name = 'inicio/CBV/lista_blogs.html'
-        
-    
-    
-    
+
+
+def lista_blogs(request):
+    blogs = Blog.objects.all()
+    return render(request, 'blogs/lista_blogs.html', {'blogs': blogs})
+
+def detalle_blog(request, blog_id):
+    blog = Blog.objects.get(pk=blog_id)
+    return render(request, 'blogs/detalle_blog.html', {'blog': blog})

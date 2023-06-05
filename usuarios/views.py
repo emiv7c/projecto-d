@@ -26,7 +26,7 @@ def login(request):
             django_login(request, usuario)
             return redirect('inicio:inicio')
         else:
-            return redirect(request, 'usuarios/login.html' , {'formulario': formulario } )
+            return render(request, 'usuarios/login.html' , {'formulario': formulario } )
         
     
     formulario=AuthenticationForm
@@ -37,14 +37,14 @@ def registro(request):
     
     if request.method=="POST":
         formulario=MiUserCreationForm(request.POST)
-     
+    
         if formulario.is_valid():
             
             formulario.save()
             return redirect('usuarios:login')
         else:
-          return render(request, 'usuarios/registro.html', {'formulario': formulario})
-      
+            
+            return render(request, 'usuarios/registro.html', {'formulario': formulario})
 
     formulario = MiUserCreationForm()
     return render(request, "usuarios/registro.html", {'formulario': formulario})
@@ -57,18 +57,17 @@ def editar_perfil(request):
     
     if request.method=="POST":
         formulario=MiUserChangeForm(request.POST, request.FILES, instance= request.user)
-     
         if formulario.is_valid():
-            request.user.Avatar.imagen = formulario.cleaned_data.get('imagen')
-            request.user.Avatar.save()
+            request.user.avatar.avatar = formulario.cleaned_data.get('imagen')
+            request.user.avatar.save()
             formulario.save()
             return redirect('inicio:inicio')
         else:
-          return render(request, 'usuarios/editar_perfil.html', {'formulario': formulario})
-      
+            return render(request, 'usuarios/editar_perfil.html', {'formulario': formulario})
+    
 
     formulario = MiUserChangeForm()
-    return render(request, "usuarios/editar_perfil.html", {'formulario': formulario})
+    return render(request, "usuarios/editar_perfil.html",( {'formulario': formulario}))
 
 
 

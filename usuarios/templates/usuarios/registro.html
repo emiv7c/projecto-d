@@ -20,7 +20,7 @@
 {% endif %}
 
 
-<form action={% url 'usuarios:editar' %} method="POST">
+<form action={% url 'usuarios:registro' %} method="POST">
     {%csrf_token%}
     <table>
         {{formulario}}
